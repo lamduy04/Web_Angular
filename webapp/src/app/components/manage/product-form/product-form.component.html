@@ -1,0 +1,73 @@
+<div class="flex flex-col items-center px-40 mt-10">
+    <h1>Add New Product</h1>
+    <form class="shadow p-4" [formGroup]="productForm">
+        <div class="flex flex-wrap">
+
+            <mat-form-field class="w-full">
+                <mat-label>Category</mat-label>
+                <mat-select formControlName="categoryId" multiple>
+                @for (item of categories; track $index){
+                
+                <mat-option [value]="item._id">{{item.name}}</mat-option>
+            }
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Brand</mat-label>
+                <mat-select formControlName="categoryId" multiple>
+                
+                
+                    @for (item of brands; track $index){
+                
+                        <mat-option [value]="item._id">{{item.name}}</mat-option>
+                    }
+            
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" formControlName="name"/>
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Short Description</mat-label>
+                <input matInput type="text" formControlName="shortDescription"/>
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Description</mat-label>
+                <textarea matInput type="text" rows="S" formControlName="description"></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Price</mat-label>
+                <input matInput type="number" formControlName="price"/>
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+                <mat-label>Discount</mat-label>
+                <input matInput type="number" formControlName="discount"/>
+            </mat-form-field>
+
+            <div class="w-full flex flex-col" formArrayName="images">
+                <div class="flex justify-between"><h3>Images</h3>
+                    <button mat-raised-button color="primary" (click)="addImage()">Add Image</button>
+                    <button mat-raised-button color="primary" (click)="removeImage()">Remove Image</button>
+                </div>
+                @for (item of images.controls; track $index){
+                <mat-form-field class="w-full">
+                    <mat-label>Images {{$index+1}}</mat-label>
+                    <input matInput type="text" [formControlName]="$index"/>
+                </mat-form-field>
+            }
+            </div>
+
+        </div>
+        <div class="flex justify-center">
+            <button mat-raised-button color="primary" (click)="addProduct()">Add</button>
+        </div>
+
+    </form>
+</div>
