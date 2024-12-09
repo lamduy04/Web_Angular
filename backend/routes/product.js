@@ -1,5 +1,5 @@
 const express = require("express");
-const { addProduct, updateProduct, deleteProduct, getProduct, getAllProducts } = require("../handlers/product-handler");
+const { addProduct, updateProduct, deleteProduct, getProduct, getAllProducts } = require("./../handlers/product-handler");
 const router = express.Router();
 
 router.post("/", async (req, res) => {

@@ -1,5 +1,5 @@
 export interface Product {
-    id?: string;
+    _id?: string;
     name: string;
     shortDescription: string;
     description: string;
@@ -7,4 +7,6 @@ export interface Product {
     discount: number;
     images: string[];
     categoryId: string;
+    isFeatured:boolean;
+    isNew:boolean;
 }

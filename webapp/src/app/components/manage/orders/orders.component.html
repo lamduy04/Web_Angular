@@ -1,0 +1,57 @@
+<div class="py-10 px-20">
+    <h3>My Order</h3>
+    <div class="overflow-hidden rounded-lg p-6">
+        
+        @for (order of orders; track $index) {
+            <div class="flex justify-between">
+                <div class="w-6/12">
+                    <h6>Order ID:{{order._id}}</h6>
+                <span>Date:</span><span>{{order.date| date:'mediumDate'}}</span>
+                <h6>Customer Address</h6>
+                <p>{{order.address.address1}}</p>
+                <p>{{order.address.address2}}</p>
+                <p>{{order.address.city}}</p>
+                <p>{{order.address.pincode}}</p>
+                </div>
+                <div class="w-6/12">
+                    <mat-button-toggle-group [value]="order.status" name="status" aria-label="Font Style" (change)="statusChanged($event,order)">
+                        <mat-button-toggle value="Dispatched">Dispatched</mat-button-toggle>
+                        <mat-button-toggle value="Shipped">Shipped</mat-button-toggle>
+                        <mat-button-toggle value="Delivered">Delivered</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+            </div>
+            <div class="mb-10 shadow-lg">
+            @for (item of order.items; track $index) {
+                <div class="space-y-4">
+                    <!-- Product Item -->
+                    <div class="flex items-center justify-between">
+                        <!-- Hình ảnh sản phẩm và thông tin -->
+                        <div class="flex items-center">
+                            <!-- Hình ảnh sản phẩm -->
+                            <img [src]="item.product.images[0]" alt="Product Image"
+                                class="w-16 h-16 object-cover rounded-md mr-4" />
+                            <!-- Tên và mô tả sản phẩm -->
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-800">{{item.product.name}}</h3>
+                                <p class="text-sm text-gray-500">{{item.product.shortDescription}}</p>
+                            </div>
+                        </div>
+            
+                        <!-- Giá và số lượng -->
+                        <div class="flex items-center">
+                            <span class="text-gray-700 font-semibold mr-4">{{sellingPrice(item.product)*item.quantity}}</span>
+                            
+                            <span class="w-16 p-2 border rounded-md">{{item.quantity}}</span>
+                            
+                        </div>
+                    </div>
+            
+                </div>
+                }
+            </div>
+        }
+        
+    </div>
+    
+</div>

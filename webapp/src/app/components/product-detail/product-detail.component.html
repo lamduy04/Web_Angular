@@ -1,0 +1,91 @@
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <!-- Product Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Product Images -->
+        <div class="space-y-4">
+            
+                <img [src]="mainImage" alt="Main Product Image" class="w-full rounded-lg shadow-lg">
+            
+            
+            <div class="flex gap-4" >
+                @for (url of product.images; track $index) {
+                    <img [src]="url" alt="Main Product Image" class="w-full rounded-lg shadow-lg"
+                    class="w-24 h-24 rounded-lg shadow-lg cursor-pointer" (click)="changeImage(url)">
+                    
+                }
+            </div>
+        </div>
+
+        <!-- Product Details -->
+        <div>
+            <h1 class="text-3xl font-bold text-gray-800">{{product.name}}</h1>
+            <p class="text-lg text-gray-600 mt-2">{{product.shortDescription}}</p>
+            <div class="mt-8">
+                <h2 class="text-2xl font-bold text-gray-800">Product Description</h2>
+                <p class="mt-4 text-gray-600 leading-relaxed">
+                    {{product.description}}
+                </p>
+            </div>
+            <div class="flex  gap-8">
+                <p class="mt-4 text-2xl font-semibold text-green-300"><s>{{product.price}}.Đ</s></p>
+            <p class="mt-4 text-xl font-semibold text-red-500">-{{product.discount}}%</p>
+            </div>
+            <p class="mt-4 text-2xl font-semibold text-green-600">{{sellingPrice}}.Đ</p>
+
+            <div class="mt-6">
+                @if(isProductInCart(product._id!)){
+                    <button mat-flat-button class="bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-blue-500" (click)="addToCart(product)">Remove to
+                        Cart</button>
+                }@else {
+                    <button mat-flat-button class="bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-blue-500" (click)="addToCart(product)">Add to
+                        Cart</button>
+                }
+            </div>
+
+            <!-- Product Highlights -->
+        </div>
+    </div>
+
+    <!-- Product Description and Reviews -->
+    <div class="mt-16">
+        <!-- Tabs -->
+        <div class="flex border-b border-gray-300">
+            <button
+                class="px-6 py-3 text-lg font-semibold text-gray-700 border-b-2 border-blue-600">Description</button>
+            <button class="px-6 py-3 text-lg font-semibold text-gray-600 hover:text-gray-800">Details</button>
+            <button class="px-6 py-3 text-lg font-semibold text-gray-600 hover:text-gray-800">Reviews</button>
+        </div>
+
+        <!-- Description Content -->
+        
+
+        <!-- Product Details Content -->
+
+
+        <!-- Reviews Section -->
+        <div class="mt-8">
+            <h2 class="text-2xl font-bold text-gray-800">Customer Reviews</h2>
+            <div class="mt-4 space-y-6">
+                <div class="bg-white p-4 rounded-lg shadow-lg">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold text-gray-800">John Doe</h3>
+                        <span class="text-sm text-gray-500">November 15, 2024</span>
+                    </div>
+                    <p class="mt-2 text-gray-600">
+                        This drink is amazing! I love how it’s both tasty and healthy. Perfect for my post-workout
+                        routine.
+                    </p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold text-gray-800">Jane Smith</h3>
+                        <span class="text-sm text-gray-500">November 20, 2024</span>
+                    </div>
+                    <p class="mt-2 text-gray-600">
+                        A great find! I appreciate the low sugar content and how easy it is on my digestion.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

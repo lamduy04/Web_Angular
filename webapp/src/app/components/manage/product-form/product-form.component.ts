@@ -7,11 +7,13 @@ import { Brand } from '../../../types/brand';
 import { Category } from '../../../types/category';
 import { CategoryService } from '../../../services/category.service';
 import { BrandService } from '../../../services/brand.service';
-
+import { ProductService } from '../../../services/product.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @Component({
   selector: 'app-product-form',
   standalone: true,
-  imports: [ReactiveFormsModule,MatInputModule,MatButtonModule,MatSelectModule],
+  imports: [ReactiveFormsModule,MatInputModule,MatButtonModule,MatSelectModule,MatCheckboxModule],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.scss'
 })
@@ -26,24 +28,59 @@ export class ProductFormComponent {
     images: this.formBuilder.array([]),
     categoryId: [null,[Validators.required]],
     brandId: [null,[Validators.required]],
+    isFeatured:[false],
+    isNewProduct:[false]
   });
 
   categoryService=inject(CategoryService);
   brandService=inject(BrandService);
+  productService=inject(ProductService);
   brands:Brand[]=[];
   categories:Category[]=[];
+  id!:string;
+  route=inject(ActivatedRoute);
   ngOnInit(){
-    this.addImage();
+    
     this.categoryService.getCategories().subscribe((result)=>{
       this.categories=result;
     });
     this.brandService.getBrands().subscribe((result)=>{
       this.brands=result;
     });
+    this.id=this.route.snapshot.params["id"];
+    console.log(this.id);
+    if(this.id){
+      this.productService.getProductById(this.id).subscribe(result =>{
+        for (let index = 0; index < result.images.length; index++) {
+          this.addImage();
+          
+        }
+        this.productForm.patchValue(result as any);
+      })
+    }else {
+      this.addImage();
+    }
+
   }
+
+
+  router=inject(Router);
   addProduct(){
     let value=this.productForm.value;
     console.log(value);
+    this.productService.addProduct(value as any).subscribe((result)=>{
+      alert('Product Added');
+      this.router.navigateByUrl("/admin/products");
+    });
+  }
+
+  updateProduct(){
+    let value=this.productForm.value;
+    console.log(value);
+    this.productService.updateProduct(this.id,value as any).subscribe((result)=>{
+      alert('Product Update');
+      this.router.navigateByUrl("/admin/products");
+    });
   }
 
   addImage(){

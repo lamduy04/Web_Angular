@@ -1,0 +1,43 @@
+<div class="border-r-4 w-full shadow-lg p-4 text-center font-sans">
+    <!-- Product Image -->
+    <img [src]="product.images[0]" alt="Product Image" class="w-full h-[250px] rounded-lg object-cover mb-4"  [routerLink]="'/product/' + product._id"/>
+
+    <!-- Product Title -->
+    <h3 class="text-lg font-medium text-gray-800 mb-2">
+        {{product.name}}
+    </h3>
+
+    <!-- Product Short Description -->
+    <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+        {{product.shortDescription}}
+    </p>
+
+    <!-- Product Price Section -->
+    <div class="space-y-2">
+        <!-- Giá gốc và giảm giá -->
+        <div class="flex items-center justify-between">
+            <p class="text-sm font-semibold text-green-300 line-through">
+                {{product.price}}.Đ
+            </p>
+            <p class="text-sm font-semibold text-red-500">
+                -{{product.discount}}%
+            </p>
+        </div>
+
+        <!-- Giá bán và nút mua -->
+        <div class="flex items-center justify-between">
+            <p class="text-lg font-semibold text-green-600">
+                {{sellingPrice}}.Đ
+            </p>
+            <button
+                class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500 text-white hover:bg-blue-600"
+                (click)="addToCart(product)">
+                @if(isProductInCart(product._id!)){
+                    <mat-icon>remove_shopping_cart</mat-icon>
+                }@else{
+                <mat-icon>add_shopping_cart</mat-icon>
+            }
+            </button>
+        </div>
+    </div>
+</div>

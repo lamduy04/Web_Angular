@@ -1,8 +1,8 @@
 const express = require("express");
-const { addBrand, updateBrand, deleteBrand, getBrand,getBrands } = require("../handlers/brand-handler");
+const { addBrand, updateBrand, deleteBrand, getBrandById,getBrands } = require("../handlers/brand-handler");
 const router = express.Router();
 
-router.post("", async (req, res) => {
+router.post("/", async (req, res) => {
     console.log("here");
     let model= req.body;
     let result = await addBrand(model);
@@ -27,7 +27,7 @@ router.delete("/:id", async (req, res) => {
 router.get("/:id", async (req, res) => {
     console.log("here");
     let id =req.params["id"]
-    let brand= await getBrand(id);
+    let brand= await getBrandById(id);
     res.send(brand);
 });
 
