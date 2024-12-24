@@ -91,3 +91,81 @@ header {
         }
     }
 }
+/* General Layout for Profile and Auth Sections */
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+/* Profile Section */
+.profile-section {
+    .profile-link {
+        font-size: 1.1rem;
+        color: #333;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+    .profile-link:hover {
+        color: #4CAF50; /* Green hover color */
+    }
+}
+
+/* Authentication and Cart/Orders Section */
+.auth-cart-section {
+    .link-btn {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        color: white;
+        border-radius: 0.375rem;
+        text-decoration: none;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .link-btn:hover {
+        transform: translateY(-2px);
+    }
+
+    /* Cart Button */
+    .link-btn.cart-btn {
+        background-color: #3B82F6; /* Blue */
+    }
+    .link-btn.cart-btn:hover {
+        background-color: #2563EB;
+    }
+
+    /* Orders Button */
+    .link-btn.orders-btn {
+        background-color: #6B7280; /* Gray */
+    }
+    .link-btn.orders-btn:hover {
+        background-color: #4B5563;
+    }
+
+    /* Logout Button */
+    .link-btn.logout-btn {
+        background-color: #EF4444; /* Red */
+    }
+    .link-btn.logout-btn:hover {
+        background-color: #DC2626;
+    }
+
+    /* Login Button */
+    .link-btn.login-btn {
+        background-color: #10B981; /* Green */
+    }
+    .link-btn.login-btn:hover {
+        background-color: #059669;
+    }
+
+    /* Register Button */
+    .link-btn.register-btn {
+        background-color: #FB923C; /* Orange */
+    }
+    .link-btn.register-btn:hover {
+        background-color: #F97316;
+    }
+}

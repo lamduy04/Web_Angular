@@ -28,12 +28,10 @@ export class OrdersComponent {
 
   statusChanged(button:any,order:Order){
     console.log(button.value);
-    this.orderService.updateOrderStatus(order._id!,button.status).subscribe(result =>{
-      console.log(button.value);
-      this.orderService.updateOrderStatus(order._id!,button.value).subscribe(result=>{
-        alert('Order status updated');
-      })
-    })
+    this.orderService.updateOrderStatus(order._id!,button.value).subscribe(result =>{
+      alert('Order status updated');
+      
+    });
   }
 
 }

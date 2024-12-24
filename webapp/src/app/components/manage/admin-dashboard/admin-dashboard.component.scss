@@ -1,0 +1,66 @@
+.admin-buttons {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    gap: 20px;
+
+    .custom-button {
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 8px;
+        padding: 10px 20px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        &:active {
+            background-color: #003f8a;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+        }
+    }
+}
+.chart-container {
+    width: 80%;
+    margin: 0 auto;
+}
+.dashboard-title {
+    font-size: 1.75rem; /* Kích thước tương ứng với text-2xl */
+    font-weight: bold; /* Đậm */
+    color: #1e3a8a; /* Màu xanh đậm */
+    text-align: center; /* Căn giữa */
+    text-transform: uppercase; /* Chữ in hoa */
+    letter-spacing: 0.05rem; /* Khoảng cách giữa các ký tự */
+    margin-bottom: 1rem; /* Khoảng cách dưới tiêu đề */
+    position: relative;
+  
+    /* Dòng gạch dưới tùy chỉnh */
+    &::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background-color: #3b82f6; /* Màu xanh nhạt */
+      margin: 0.5rem auto 0;
+      border-radius: 3px; /* Bo góc nhẹ */
+    }
+  
+    /* Hiệu ứng hover */
+    &:hover {
+      color: #2563eb; /* Thay đổi màu chữ khi hover */
+      &::after {
+        background-color: #1d4ed8; /* Thay đổi màu gạch dưới khi hover */
+      }
+    }
+  }
+  
+

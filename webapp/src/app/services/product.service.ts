@@ -8,30 +8,28 @@ import { Product } from '../types/product';
 })
 export class ProductService {
 
-  constructor() {}
-  http=inject(HttpClient)
+    constructor() {}
+    http=inject(HttpClient)
 
 
-  getAllProducts() {
-    return this.http.get<Product[]>(environment.apiUrl + '/product');
+    getAllProducts() {
+        return this.http.get<Product[]>(environment.apiUrl + '/product');
 }
 
-getProductById(id: string) {
-    return this.http.get<Product>(environment.apiUrl + '/product/' + id);
+    getProductById(id: string) {
+        return this.http.get<Product>(environment.apiUrl + '/product/' + id);
 }
 
-addProduct(model: Product) {
-    return this.http.post(environment.apiUrl + '/product', model);
+    addProduct(model: Product) {
+        return this.http.post(environment.apiUrl + '/product', model);
 }
 
-updateProduct(id: string, model: Product) {
-    return this.http.put(environment.apiUrl + '/product/' + id, model);
+    updateProduct(id: string, model: Product) {
+        return this.http.put(environment.apiUrl + '/product/' + id, model);
 }
 
-deleteProduct(id: string) {
-    return this.http.delete(environment.apiUrl + '/product/' + id);
+    deleteProduct(id: string) {
+        return this.http.delete(environment.apiUrl + '/product/' + id);
 }
 
-
-  
 }

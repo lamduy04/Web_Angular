@@ -1,11 +1,11 @@
 <div class="py-10 px-20">
-    <h3>My Order</h3>
+    <h3>Đơn Hàng</h3>
     <div class="overflow-hidden rounded-lg p-6">
         
         @for (order of orders; track $index) {
-            <h6>Order ID:{{order._id}}</h6>
-            <span>Date:</span><span>{{order.date| date:'mediumDate'}}</span>
-            <p>Order Status: {{order.status}}</p>
+            <h6>ID Đơn hàng:{{order._id}}</h6>
+            <span>Ngày:</span><span>{{order.date| date:'mediumDate'}}</span>
+            <p>Trạng thái: {{order.status}}</p>
             <div class="mb-10 shadow-lg">
             @for (item of order.items; track $index) {
                 <div class="space-y-4">

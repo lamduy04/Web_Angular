@@ -1,14 +1,20 @@
-<div class="flex justify-around p-10">
-    <button mat-raised-button routerLink="/admin/categories">
-        Manage Category
+<div class="flex justify-around p-10 admin-buttons">
+    <button mat-raised-button class="custom-button" routerLink="/admin/categories">
+        Phân Loại
     </button>
-    <button mat-raised-button routerLink="/admin/products">
-        Manage Products
+    <button mat-raised-button class="custom-button" routerLink="/admin/products">
+        Sản Phẩm
     </button>
-    <button mat-raised-button routerLink="/admin/brands">
-        Manage Brands
+    <button mat-raised-button class="custom-button" routerLink="/admin/brands">
+        Thương Hiệu
     </button>
-    <button mat-raised-button routerLink="/admin/orders">
-        Orders
+    <button mat-raised-button class="custom-button" routerLink="/admin/orders">
+        Đơn Hàng
     </button>
 </div>
+<h1 class="text-2xl dashboard-title">Doanh Thu</h1>
+
+<div class="chart-container">
+    <canvas id="myChart"></canvas>
+  </div>
+

@@ -1,30 +1,39 @@
 <header>
     <div class="top-bar">
-        <div class="logo cursor-pointer" routerLink="/">ShopLogo</div>
+        <div class="logo cursor-pointer" routerLink="/">FAST FOOD RESTAURANT</div>
         <div class="search-bar">
-            <input type="text" placeholder="Search products..." [(ngModel)]="searchTerm" (keyup.enter)="onSearch($event)"/>
+            <input type="text" placeholder="Tìm kiếm sản phẩm..." [(ngModel)]="searchTerm" (keyup.enter)="onSearch($event)"/>
             <button type="submit" (click)="onSearch($event)">Search</button>
         </div>
         <div class="flex justify-between items-center ml-2">
-            @if(authService.isAdmin){
-                <a routerLink="/admin" class="profile-link">{{authService.userName}}</a>
-            }@else {
-                <a routerLink="/profile" class="profile-link">{{authService.userName}}</a>
-            }
-            <div class=" flex items-center space-x-4 ml-4">
-                
-            @if(authService.isLoggedIn ){
-                @if (!authService.isAdmin) {
-                <a routerLink="/cart">Cart</a>
-                <a routerLink="/orders" class="cursor-pointer ml-2">Orders</a>
-            }
-            <a (click)="logout()" class="cursor-pointer ml-2">Logout</a>
-        }@else {
-            <a routerLink="/login" class="cursor-pointer ml-2">Log In</a>
-            <a routerLink="/register" class="cursor-pointer ml-2">Register</a>
-        }
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <!-- Admin or Regular User Profile Link -->
+                @if(authService.isAdmin) {
+                    <a routerLink="/admin" class="profile-link">{{authService.userName}}</a>
+                }@else {
+                    <a routerLink="/profile" class="profile-link">{{authService.userName}}</a>
+                }
+            </div>
+        
+            <!-- Authentication and Cart/Orders Section -->
+            <div class="auth-cart-section flex items-center space-x-4 ml-4">
+                @if(authService.isLoggedIn) {
+                    <!-- For Logged In Users (Non-Admin) -->
+                    @if(!authService.isAdmin) {
+                        <a routerLink="/cart" class="link-btn cart-btn">Giỏ Hàng</a>
+                        <a routerLink="/orders" class="link-btn orders-btn">Đơn Hàng</a>
+                    }
+                    <!-- Logout Button -->
+                    <a (click)="logout()" class="link-btn logout-btn">Đăng Xuất</a>
+                }@else {
+                    <!-- For Logged Out Users -->
+                    <a routerLink="/login" class="link-btn login-btn">Đăng Nhập</a>
+                    <a routerLink="/register" class="link-btn register-btn">Đăng Kí</a>
+                }
             </div>
         </div>
+        
     </div>
 
     @if (authService.isLoggedIn){

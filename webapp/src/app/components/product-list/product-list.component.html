@@ -1,11 +1,11 @@
 <div class="flex px-10 py-2">
     <div class="w-3/12">
-        <h6>Filters</h6>
+        <h6>Tìm kiếm </h6>
         <div class="flex flex-col px-6">
 
             <div class="w-full p-2 mb-4">
                 <mat-form-field class="w-full ">
-                    <mat-label>Category</mat-label>
+                    <mat-label>Phân loại</mat-label>
                     <mat-select name="categoryId" [(ngModel)]="categoryId" (valueChange)="getProducts()">
                         @for (item of category; track $index) {
                         <mat-option [value]="item._id">{{item.name}}</mat-option>
@@ -16,7 +16,7 @@
 
             <div class="w-full p-2 mb-4">
                 <mat-form-field class="w-full ">
-                    <mat-label>Brands</mat-label>
+                    <mat-label>Thương hiệu</mat-label>
                     <mat-select  name="BrandId" [(ngModel)]="brandId" (valueChange)="getProducts()">
                         @for (item of brands; track $index) {
                             <mat-option [value]="item._id">{{item.name}}</mat-option>
@@ -29,13 +29,13 @@
     </div>
     <div class="flex-1">
         <div class="flex justify-between">
-            <h6>Products</h6>
+            <h6>Sản Phẩm</h6>
             <mat-form-field class="w-40 ">
-                <mat-label>Order By</mat-label>
+                <mat-label>Theo Giá</mat-label>
                 <mat-select (valueChange)="orderChange($event)">
 
-                    <mat-option [value]="1">Price low to high</mat-option>
-                    <mat-option [value]="-1">Price high to low</mat-option>
+                    <mat-option [value]="1">Giá từ thấp đến cao</mat-option>
+                    <mat-option [value]="-1">Giá từ cao đến thấp</mat-option>
 
                 </mat-select>
             </mat-form-field>

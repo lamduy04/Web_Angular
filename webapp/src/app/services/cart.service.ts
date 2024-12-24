@@ -18,8 +18,7 @@ export class CartService {
     })
   }
   getCartItems(){
-    return this.http.get<CartItem[]>(environment.apiUrl+
-      '/customer/carts'
+    return this.http.get<CartItem[]>(environment.apiUrl+'/customer/carts'
     );
   }
 

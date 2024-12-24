@@ -1,7 +1,7 @@
 <div class="max-w-4xl mx-auto py-10">
     @if(orderStep==0){
     <header class="mb-8">
-        <h1 class="text-3xl font-bold text-center text-gray-800">Your Order</h1>
+        <h1 class="text-3xl font-bold text-center text-gray-800">Giỏ Hàng</h1>
     </header>
 
     <!-- Product List -->
@@ -41,7 +41,7 @@
     <!-- Total Section -->
     <div class="bg-white shadow-md rounded-lg p-6 mt-6">
         <div class="flex items-center justify-between">
-            <span class="text-xl font-semibold text-gray-700">Total</span>
+            <span class="text-xl font-semibold text-gray-700">Giá</span>
             <span class="text-2xl font-bold text-gray-800">{{totalAmmount}}.VNĐ</span>
         </div>
     </div>
@@ -49,19 +49,19 @@
     <!-- Actions -->
     <div class="flex justify-between mt-6">
         <button routerLink="/" class="px-6 py-3 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400">
-            Continue Shopping
+            Tiếp tục mua...
         </button>
         <button (click)="checkout()" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-            Checkout
+            Thanh toán
         </button>
     </div>
     }@else if(orderStep==1) {
-    <h1 class="texl-3xl font-bold text-center mb-8"> Your Order Address</h1>
-    <form [formGroup]="addressForm">Address
+    <h1 class="texl-3xl font-bold text-center mb-8"> Địa chỉ của bạn</h1>
+    <form [formGroup]="addressForm">Địa chỉ
         <!-- Name Input -->
         <div class="mb-4">
             <mat-form-field class="w-full">
-                <mat-label for="name">Address 1</mat-label>
+                <mat-label for="name">Địa chỉ 1</mat-label>
                 <input type="text" formControlName="address1" placeholder="Enter your address" matInput />
             </mat-form-field>
         </div>
@@ -69,7 +69,7 @@
         <!-- Email Input -->
         <div class="mb-4">
             <mat-form-field class="w-full">
-                <mat-label for="name">Address 2</mat-label>
+                <mat-label for="name">Địa chỉ 2</mat-label>
                 <input type="text" formControlName="address2" placeholder="Enter your address" matInput />
             </mat-form-field>
         </div>
@@ -77,34 +77,36 @@
         <!-- Password Input -->
         <div class="mb-6">
             <mat-form-field class="w-full">
-                <mat-label for="name">City</mat-label>
+                <mat-label for="name">Thành phố</mat-label>
                 <input type="text" formControlName="city" placeholder="Enter your city" matInput />
             </mat-form-field>
         </div>
 
         <div class="mb-6">
             <mat-form-field class="w-full">
-                <mat-label for="name">Time</mat-label>
+                <mat-label for="name">Thời gian</mat-label>
                 <input type="text" formControlName="pincode" placeholder="Enter time you want" matInput />
             </mat-form-field>
         </div>
 
         <!-- Submit Button -->
         <button mat-raised-button (click)="addAddress()">
-            Continue...
+            Tiếp tục...
         </button>
     </form>
     }@else if (orderStep==2) {
-    <h1 class="texl-3xl font-bold text-center mb-8">Select Payment Method</h1>
-    <div class="p-30 shadow">
-        <mat-radio-group [(ngModel)]="paymentType">
-            <mat-radio-button value="cash">Cash</mat-radio-button>
-            <mat-radio-button value="card">Card</mat-radio-button>
-        </mat-radio-group>
-    </div>
+        <h1 class="text-3xl font-bold text-center mb-8">Chọn Phương thức thanh toán</h1>
+        <div class="p-30 shadow radio-button-group" style="background-color: rgb(101, 101, 99);color:black;">
+            <mat-radio-group [(ngModel)]="paymentType">
+                <mat-radio-button value="cash" style="color: blue; font-size: 16px;">Tiền Mặt</mat-radio-button>
+            </mat-radio-group>
+                <mat-radio-button value="card" style="color: blue; font-size: 16px;">Ngân Hàng</mat-radio-button>
+            
+        </div>
+        
 
     <button class="mt-20" mat-raised-button (click)="completeOrder()">
-        Continue
+        Tiếp tục...
     </button>
     }@else if(orderStep==3){
     <div class=" flex items-center justify-center w-full">
@@ -116,12 +118,12 @@
                         clip-rule="evenodd" />
                 </svg>
             </div>
-            <h2 class="text-2xl font-semibold text-gray-800 mt-4">Order Complete!</h2>
-            <p class="text-gray-600 mt-2">Thank you for your purchase. Your order has been successfully completed.</p>
+            <h2 class="text-2xl font-semibold text-gray-800 mt-4">Đơn hàng đã được gửi !</h2>
+            <p class="text-gray-600 mt-2">Cảm ơn vì đơn hàng của bạn. Đơn hàng của bạn sẽ sớm đến tay bạn.</p>
             <div class="mt-6">
                 <a routerLink="/"
                     class="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:outline-none">
-                    Go to Home
+                    Trở về
                 </a>
             </div>
         </div>
